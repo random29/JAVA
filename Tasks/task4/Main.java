@@ -1,4 +1,4 @@
-package com.company;
+package it.park;
 
 import java.util.Scanner;
 
