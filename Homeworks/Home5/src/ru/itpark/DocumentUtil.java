@@ -1,46 +1,51 @@
-package ru.itpark;
+package com.company;
 
 import java.util.Scanner;
 
 public class DocumentUtil {
     static int count =0;
-    public static void showdocument(String document[]){
-        for (int i = 0; i < document.length; i++) {
-            String lineToOut = document[i] == null ? "_______" : document[i];
+    String lines[] = new String[6];
+    public void showdocument(){
+        for (int i = 0; i < lines.length; i++) {
+            String lineToOut = lines[i] == null ? "_______" : lines[i];
             System.out.println(i + ": " + lineToOut);
         }
     }
-    public static void inbegin(String document[],String newLine){
+    public void inbegin(String newLine){
 
         for (int i = count; i > 0; i--) {
-            document[i] = document[i - 1];
+            lines[i] = lines[i - 1];
         }
-        document[0] = newLine;
+        lines[0] = newLine;
         count++;
     }
-    public static void inend(String document[],String newLine){
-        document[count] = newLine;
+    public void inend(String newLine){
+        if (count == lines.length) {
+            System.err.println("Нет места");
+            return;
+        }
+        lines[count] = newLine;
         count++;
     }
-    public static void deletestring(String document[],int newLine){
+    public void deletestring(int newLine){
         if (newLine == count) {
-            document[newLine]=null;
+            lines[newLine]=null;
             count--;
         }
         else
         {
             for (int i=newLine; i<count ; i++) {
-                document[i]=document[i+1];
+                lines[i]=lines[i+1];
             }
-            document[count]=null;
+            lines[count]=null;
             count--;
         }
     }
-    public static void cleanme(String document[],int index){
-        document[index]=null;
+    public void cleanme(int index){
+        lines[index]=null;
     }
 
-    public static void changeme(String document[],int index,String newLine){
-        document[index]=newLine;
+    public void changeme(int index,String newLine){
+        lines[index]=newLine;
     }
 }
