@@ -60,7 +60,10 @@ public class Main {
                     document[index].cleanme(index1);
                 }
                 break;
-                case 7:
+                case 7:{
+                    DocumentUtil.printall(document,size);
+                } break;
+                case 8:
                     System.exit(0);
             }
         }
