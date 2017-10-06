@@ -1,61 +1,63 @@
-package ru.itpark;
+package com.company;
 
 import java.util.Scanner;
 
+
+
 public class Main {
-    static int count = 0;
-
-
     public static void main(String[] args) {
-
-        String document[] = new String[6];
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите количество документов :");
+        int size = scanner.nextInt();
+        DocumentUtil document[] = new DocumentUtil[size];
+        for (int i=0 ; i<size ; i++){
+            document[i] = new DocumentUtil();
+        }
         while (true) {
-            Menu.showmenu();
+            int index;
+            System.out.println("С каким документом мы работаем?");
+            index =  scanner.nextInt();
+            Menu.Showmenu();
             int command1;
             command1 = scanner.nextInt();
             switch (command1) {
                 case 1: {
-                    DocumentUtil.showdocument(document);
+                      document[index].showdocument();
                 }
                 break;
                 case 2: {
-                    if (count == document.length) {
+                    if (document[index].count == document.length) {
                         System.err.println("Нет места");
                         return;
                     }
                     System.out.println("Введите строку: ");
                     String newLine = scanner.next();
-                    DocumentUtil.inbegin(document,newLine);
+                    document[index].inbegin(newLine);
                 }
                 break;
                 case 3: {
-                    if (DocumentUtil.count == document.length) {
-                        System.err.println("Нет места");
-                        break;
-                    }
                     System.out.println("Введите строку: ");
                     String newLine = scanner.next();
-                    DocumentUtil.inend(document,newLine);
+                    document[index].inend(newLine);
                 }
                 break;
                 case 4: {
                     System.out.println("Какую строку удалить? ");
                     int newLine = scanner.nextInt();
-                    DocumentUtil.deletestring(document,newLine);
+                    document[index].deletestring(newLine);
                 }
                 break;
                 case 5: {
                     System.out.println("Какую строку заменить? ");
-                    int index = scanner.nextInt();
+                    int index1 = scanner.nextInt();
                     System.out.println("Чем заменить? ");
                     String newLine = scanner.next();
-                    DocumentUtil.changeme(document,index,newLine);
+                    document[index].changeme(index1,newLine);
                 }
                 break;
                 case 6: { System.out.println("Какую строку очистить? ");
-                    int index = scanner.nextInt();
-                    DocumentUtil.cleanme(document,index);
+                    int index1 = scanner.nextInt();
+                    document[index].cleanme(index1);
                 }
                 break;
                 case 7:
@@ -63,4 +65,4 @@ public class Main {
             }
         }
     }
-}
+    }
