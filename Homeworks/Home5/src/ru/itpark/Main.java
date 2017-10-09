@@ -17,6 +17,9 @@ public class Main {
             int index;
             System.out.println("С каким документом мы работаем?");
             index =  scanner.nextInt();
+            if (index>=size) 
+              System.out.println("Столько документов не существует, попробуйте ещё раз.");
+            else {
             Menu.Showmenu();
             int command1;
             command1 = scanner.nextInt();
@@ -67,5 +70,5 @@ public class Main {
                     System.exit(0);
             }
         }
-    }
+    }}
     }
